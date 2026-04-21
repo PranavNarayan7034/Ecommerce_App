@@ -3,9 +3,9 @@ import logo from '../assets/Logo.png'
 
 const Navbar = () => {
     return (
-        <div className='flex justify-between items-center px-16 bg-blue-300'>
+        <div className='flex justify-between items-center px-16'>
             <div>
-                <img src={logo} alt="" className='w-25 h-25'/>
+                <img src={logo} alt="" className='w-25 h-25' />
             </div>
             <div className='flex gap-6'>
                 <a href="" className='text-lg text-black/60 font-semibold'>About Us</a>
@@ -15,8 +15,10 @@ const Navbar = () => {
                 <a href="" className='text-lg text-black/60 font-semibold'>Connect Us</a>
             </div>
             <div className='flex gap-6'>
-                <button className='px-8 py-2 rounded-lg font-semibold bg-orange-400 text-white'>Login</button>
-                <button className='px-8 py-2 rounded-lg font-semibold border-2 border-orange-400'>Signup</button>
+                <a href='/login' className='cursor-pointer px-8 py-2 rounded-lg font-semibold bg-orange-400 text-white'>
+                    Login</a>
+                <a href='/signup' className='cursor-pointer px-8 py-2 rounded-lg font-semibold border-2 border-orange-400'>
+                    Signup</a>
             </div>
         </div>
     )
