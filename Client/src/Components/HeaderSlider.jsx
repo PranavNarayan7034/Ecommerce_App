@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 const HeaderSlider = () => {
   const sliderData = [
@@ -25,65 +26,44 @@ const HeaderSlider = () => {
     },
   ];
 
-  const [currentSlide, setCurrentSlide] = useState(0);
-
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % sliderData.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [sliderData.length]);
+      setCurrentSlide((prev) => (prev + 1) % sliderData.length)
+    }, 3000)
 
-  const handleSlideChange = (index) => {
-    setCurrentSlide(index);
-  };
+    return () => clearInterval(interval)
+
+  }, [])
+
+  const [currentSlide, setCurrentSlide] = useState(0)
+  console.log(currentSlide)
 
   return (
-    <div className="overflow-hidden relative mx-24">
-      <div
-        className="flex transition-transform duration-700 ease-in-out"
-        style={{
-          transform: `translateX(-${currentSlide * 100}%)`,
-        }}
-      >
-        {sliderData.map((slide, index) => (
-          <div
-            key={slide.id}
-            className="flex flex-col-reverse md:flex-row items-center justify-between bg-[#E6E9F2] py-8 md:px-14 px-5 mt-6 rounded-xl min-w-full"
-          >
-            <div className="md:pl-8 mt-10 md:mt-0">
-              <p className="md:text-base text-orange-600 pb-1">{slide.offer}</p>
-              <h1 className="max-w-lg md:text-[40px] md:leading-12 text-2xl font-semibold">
-                {slide.title}
-              </h1>
-              <div className="flex items-center mt-4 md:mt-6 ">
-                <button className="md:px-10 px-7 md:py-2.5 py-2 bg-orange-600 rounded-full text-white font-medium">
-                  {slide.buttonText1}
-                </button>
-                <button className="group flex items-center gap-2 px-6 py-2.5 font-medium">
-                  {slide.buttonText2}
-                  
-                </button>
-              </div>
-            </div>
-           
+    <div className='mx-16'>
+      <div className='bg-[#E6E9F2] p-8 overflow-hidden rounded-xl'>
+        <motion.div key={currentSlide}
+          initial={{ opacity: 0, x: 800 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -800 }}
+          transition={{ duration: 1 }}
+          className='flex flex-col gap-6'
+        >
+          <p className='text-sm text-orange-600'>{sliderData[currentSlide].offer}</p>
+          <h3 className='text-4xl font-extrabold w-2xl'>{sliderData[currentSlide].title}</h3>
+          <div className="flex items-center mt-4 ">
+            <button className=" px-7 py-2 bg-orange-600 rounded-full text-white font-medium">
+              {sliderData[currentSlide].buttonText1}
+            </button>
+            <button className="group flex items-center gap-2 px-6 py-2.5 font-medium">
+              {sliderData[currentSlide].buttonText2}
+            </button>
           </div>
-        ))}
-      </div>
-
-      <div className="flex items-center justify-center gap-2 mt-8">
-        {sliderData.map((_, index) => (
-          <div
-            key={index}
-            onClick={() => handleSlideChange(index)}
-            className={`h-2 w-2 rounded-full cursor-pointer ${
-              currentSlide === index ? "bg-orange-600" : "bg-gray-500/30"
-            }`}
-          ></div>
-        ))}
+        </motion.div>
       </div>
     </div>
-  );
-};
+  )
 
-export default HeaderSlider;
+
+}
+
+export default HeaderSlider
