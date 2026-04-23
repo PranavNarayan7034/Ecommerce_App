@@ -29,7 +29,7 @@ const HeaderSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % sliderData.length)
-    }, 3000)
+    }, 5000)
 
     return () => clearInterval(interval)
 
@@ -48,15 +48,20 @@ const HeaderSlider = () => {
           transition={{ duration: 1 }}
           className='flex flex-col gap-6'
         >
-          <p className='text-sm text-orange-600'>{sliderData[currentSlide].offer}</p>
-          <h3 className='text-4xl font-extrabold w-2xl'>{sliderData[currentSlide].title}</h3>
-          <div className="flex items-center mt-4 ">
-            <button className=" px-7 py-2 bg-orange-600 rounded-full text-white font-medium">
-              {sliderData[currentSlide].buttonText1}
-            </button>
-            <button className="group flex items-center gap-2 px-6 py-2.5 font-medium">
-              {sliderData[currentSlide].buttonText2}
-            </button>
+          <div className='flex flex-col gap-6'>
+            <p className='text-sm text-orange-600'>{sliderData[currentSlide].offer}</p>
+            <h3 className='text-5xl font-extrabold w-2xl'>{sliderData[currentSlide].title}</h3>
+            <div className="flex items-center mt-4 ">
+              <button className=" px-7 py-2 bg-orange-600 rounded-full text-white font-medium">
+                {sliderData[currentSlide].buttonText1}
+              </button>
+              <button className="group flex items-center gap-2 px-6 py-2.5 font-medium">
+                {sliderData[currentSlide].buttonText2}
+              </button>
+            </div>
+          </div>
+          <div>
+            <img src="" alt=""/>
           </div>
         </motion.div>
       </div>
