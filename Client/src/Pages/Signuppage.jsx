@@ -48,8 +48,12 @@ const Signuppage = () => {
         toast.error(validateError)
         return
       }
-      // const response = await axios.post('', formData)
+
+      const response = await axios.post(
+        'http://127.0.0.1:8000/api/auth/signup',
+        formData)
       console.log("Account Created")
+
       toast.success('Account Created, Check your mail to verify account')
     } catch (error) {
       console.log("Error in Signup :", error)
