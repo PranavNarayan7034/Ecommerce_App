@@ -3,5 +3,5 @@ from .views import Account_creation, Account_Login
 
 urlpatterns = [
     path('signup',Account_creation),
-    path('login/',Account_Login)
+    path('login',Account_Login)
 ]
