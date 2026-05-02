@@ -3,16 +3,12 @@ from django.conf import settings
 
 def ConnectMongo():
     try:
-        client = MongoClient(settings.MongoUri)
+        client = MongoClient(settings.MONGO_URI)
+        db = client[settings.DB_NAME]
+        collection = db['users']
+
         print("Connected to Mongodb")
-
-        db = client[settings.DbName]
-        print("Database created....")
-
-        table = db['users']
-        print("Users collection created..")
+        return collection
 
     except Exception as e:
-        print('Error in mongodb Connection')
-
-ConnectMongo()
+        print('Error in mongodb Connection :',e)
