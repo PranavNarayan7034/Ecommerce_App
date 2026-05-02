@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { FaEyeSlash, FaEye } from "react-icons/fa";
 
 const Signuppage = () => {
+
+  const [showPassword, setShowPassword] = useState(false)
 
   const [formData, setFormData] = useState({
     name: '', email: '', password: ''
@@ -20,12 +23,12 @@ const Signuppage = () => {
     if (!formData.name) {
       formError = "Name Required"
     }
-    else if(formData.name.length < 3){
+    else if (formData.name.length < 3) {
       formError = "Username Must be alteast 3 Characters"
     }
     //Email validation
     else if (!formData.email) {
-      formError =  "Email Required"
+      formError = "Email Required"
     }
     else if (!emailRegex.test(formData.email)) {
       formError = "Please enter a valid email address"
@@ -53,7 +56,7 @@ const Signuppage = () => {
         'http://127.0.0.1:8000/api/auth/signup',
         formData)
       console.log("Account Created")
-      setFormData({name:"",email:"",password:""})
+      setFormData({ name: "", email: "", password: "" })
 
       toast.success('Account Created, Check your mail to verify account')
     } catch (error) {
@@ -78,7 +81,11 @@ const Signuppage = () => {
             </div>
             <div className='flex flex-col gap-2 relative'>
               <input name='password' value={formData.password} onChange={handleChange}
-                type="password" placeholder='Password' className='border-2 border-black/50 rounded-md px-5 py-2' />
+                type={showPassword ? 'text' : 'password'} placeholder='Password' className='border-2 border-black/50 rounded-md px-5 py-2' />
+              <div className='absolute right-4 top-[30%]'
+                onClick={() => setShowPassword(!showPassword)}>
+                {showPassword ? <FaEye className='text-lg' /> : <FaEyeSlash className='text-lg' />}
+              </div>
             </div>
 
             <div>
