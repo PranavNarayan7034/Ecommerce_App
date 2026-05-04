@@ -4,12 +4,12 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/f
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-900 text-slate-300 py-12 md:py-16">
+    <footer className="bg-slate-900 text-slate-300 py-12 mt-12 md:py-16">
       <div className="container mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand/About */}
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-white mb-4">Glamour.</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-white mb-4">CartWave.</h2>
             <p className="text-slate-400 mb-6 max-w-sm">
               Your one-stop destination for the latest fashion trends and premium quality clothing. Redefining style since 2026.
             </p>
@@ -75,7 +75,7 @@ const Footer = () => {
 
         {/* Footer Bottom */}
         <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Glamour. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} CartWave. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <Link to="#" className="hover:text-slate-300">Privacy Policy</Link>
             <Link to="#" className="hover:text-slate-300">Terms of Service</Link>
